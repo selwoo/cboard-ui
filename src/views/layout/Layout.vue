@@ -4,30 +4,31 @@
     <sidebar class="sidebar-container"/>
     <div class="main-container">
       <navbar/>
+      <tags-view />
       <app-main/>
     </div>
   </div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from './components'
+import { Navbar, Sidebar, AppMain, TagsView } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Layout',
   components: {
     Navbar,
     Sidebar,
-    AppMain
+    AppMain,
+    TagsView
   },
   mixins: [ResizeMixin],
   computed: {
-    sidebar() {
-      return this.$store.state.app.sidebar
-    },
-    device() {
-      return this.$store.state.app.device
-    },
+    ...mapState({
+      sidebar: state => state.app.sidebar,
+      device: state => state.app.device
+    }),
     classObj() {
       return {
         hideSidebar: !this.sidebar.opened,
