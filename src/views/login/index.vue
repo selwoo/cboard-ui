@@ -54,6 +54,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
+import { getList } from '@/api/table'
 
 export default {
   name: 'Login',
@@ -106,7 +107,10 @@ export default {
       })
     },
     handleLogin() {
-      this.$refs.loginForm.validate(valid => {
+      getList().then(response => {
+        console.log(JSON.stringify(response))
+      })
+      /*this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
           this.$store.dispatch('user/login', this.loginForm).then(() => {
@@ -119,7 +123,7 @@ export default {
           console.log('error submit!!')
           return false
         }
-      })
+      })*/
     }
   }
 }

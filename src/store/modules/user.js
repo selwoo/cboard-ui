@@ -26,6 +26,7 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
+        // response = {"code":20000,"data":{"token":"admin-token"}}
         const { data } = response
         commit('SET_TOKEN', data.token)
         setToken(data.token)
