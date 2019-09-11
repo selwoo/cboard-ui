@@ -1,13 +1,13 @@
 <template>
   <div class="page-container">
-    Dashboard
+    DashboardMine
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'Dashboard'
+  name: 'DashboardMine'
 }
 </script>
 

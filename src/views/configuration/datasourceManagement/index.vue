@@ -1,13 +1,13 @@
 <template>
   <div class="page-container">
-    Dashboard
+    datasourceManagement
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'Dashboard'
+  name: 'DatasourceManagement'
 }
 </script>
 

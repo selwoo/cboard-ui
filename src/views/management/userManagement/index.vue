@@ -1,13 +1,12 @@
 <template>
   <div class="page-container">
-    Dashboard
+    userManagement
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Dashboard'
+  name: 'userManagement'
 }
 </script>
 
