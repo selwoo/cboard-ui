@@ -70,8 +70,8 @@ export default {
       this.listLoading = true
       getList(this.listQuery).then(response => {
         console.log(JSON.stringify(response))
-        /*this.list = response.data.items
-        this.listLoading = false*/
+        // this.list = response.data.items
+        // this.listLoading = false
       })
     }
   }

@@ -22,7 +22,7 @@ import Layout from '../views/layout/Layout'
     breadcrumb: false            if false, the item will hidden in breadcrumb(default is true)
   }
 **/
-export const constantRouterMap = [
+export const constantRoutes = [
   { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
 
@@ -44,6 +44,7 @@ export const constantRouterMap = [
     redirect: '/example/table',
     name: 'Example',
     meta: { title: 'Example', icon: 'example' },
+    roles: [],
     children: [
       {
         path: 'table',
@@ -73,6 +74,14 @@ export const constantRouterMap = [
     ]
   },
 
+  { path: '*', redirect: '/404', hidden: true }
+]
+
+/**
+ * asyncRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const asyncRoutes = [
   {
     path: '/nested',
     component: Layout,
@@ -129,13 +138,21 @@ export const constantRouterMap = [
         meta: { title: 'menu2' }
       }
     ]
-  },
-
-  { path: '*', redirect: '/404', hidden: true }
+  }
 ]
 
-export default new Router({
-  // mode: 'history', //后端支持可开
+const createRouter = () => new Router({
+  // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
+  routes: constantRoutes
 })
+
+const router = createRouter()
+
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
+export default router

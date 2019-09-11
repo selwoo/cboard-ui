@@ -28,7 +28,7 @@
 <script>
 import ScrollPane from './ScrollPane'
 import path from 'path'
-import { constantRouterMap } from '@/router'
+import { constantRoutes } from '@/router'
 
 export default {
   components: { ScrollPane },
@@ -46,7 +46,7 @@ export default {
       return this.$store.state.tagsView.visitedViews
     },
     routes() {
-      return constantRouterMap
+      return constantRoutes
     }
   },
   watch: {
